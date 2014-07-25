@@ -5,6 +5,9 @@
 # of "djangoappengine" from this file.
 from djangoappengine.settings_base import *
 
+########## AUTH
+AUTH_USER_MODEL = 'blog.Emperor'
+
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )

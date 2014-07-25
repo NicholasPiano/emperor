@@ -29,6 +29,21 @@ class EmperorManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+    def create_superuser(self, display_name, email, date_of_birth, password):
+        """
+        Creates and saves a superuser with the given email, date of
+        birth and password.
+        """
+        user = self.create_user(
+            display_name=display_name,
+            email=email,
+            password=password,
+            date_of_birth=date_of_birth
+        )
+        user.is_admin = True
+        user.save(using=self._db)
+        return user
+
 class Emperor(AbstractBaseUser, PermissionsMixin):
     display_name = models.CharField(max_length=255)
     email = models.EmailField(
@@ -40,11 +55,11 @@ class Emperor(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=True)
 
-    objects = UserManager()
+    objects = EmperorManager()
 
     USERNAME_FIELD = 'email'
     DISPLAY_NAME_FIELD = 'display name'
-    REQUIRED_FIELDS = ['date_of_birth']
+    REQUIRED_FIELDS = ['display_name','date_of_birth']
 
     def get_full_name(self):
         # The user is identified by their email address

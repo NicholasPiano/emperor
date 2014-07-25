@@ -4,9 +4,9 @@
 from django.conf.urls import patterns, include, url
 
 #local
-from blog.urls import *
+from blog.views import *
 
 #patterns
 urlpatterns = patterns('',
-    url(r'^$', ),
+    url(r'^$', BlogListView.as_view()),
 )

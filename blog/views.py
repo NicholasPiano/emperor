@@ -1,5 +1,7 @@
 #django
+from django.shortcuts import render
 from django.views.generic import View
+from django.http import HttpResponse, HttpResponseRedirect
 
 #local
 
@@ -7,8 +9,9 @@ from django.views.generic import View
 
 
 ### FRONTEND ###
-class BlogListView(View):
-    pass
+class BlogListView(View): #index
+    def get(self, request):
+        return HttpResponse('Hello, World!')
 
 class EmperorListView(View):
     pass
