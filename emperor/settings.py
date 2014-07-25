@@ -108,7 +108,9 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
-INSTALLED_APPS = (
+### INSTALLED_APPS ###
+
+DJANGO_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -119,6 +121,9 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+)
+
+GAE_APPS = (
     'djangotoolbox',
     'autoload',
     'dbindexer',
@@ -126,6 +131,14 @@ INSTALLED_APPS = (
     # djangoappengine should come last, so it can override a few manage.py commands
     'djangoappengine',
 )
+
+LOCAL_APPS = (
+    'blog',
+)
+
+INSTALLED_APPS = DJANGO_APPS + GAE_APPS + LOCAL_APPS
+
+### END INSTALLED_APPS ###
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

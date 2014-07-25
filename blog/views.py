@@ -1,1 +1,10 @@
-# Create your views here.
+#django
+
+#local
+
+#util
+
+### FRONTEND ###
+
+
+### BACKEND ##
