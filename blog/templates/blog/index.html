@@ -1,1 +1,12 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
 
+{% block title %} Kneel before Zod {% endblock %}
+
+{% block css %}<link rel="stylesheet" href="{% static 'blog/css/index.css' %}">{% endblock %}
+
+{% block content %}
+<div id="wrapper" class="container">
+    <p>Hello, World!</p>
+</div>
+{% endblock %}

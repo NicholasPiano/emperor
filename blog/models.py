@@ -92,14 +92,37 @@ class Blog(models.Model):
     description = models.CharField(max_length=255)
     date_created = models.DateTimeField(auto_now_add=True)
 
+class Year(models.Model):
+    #connections
+    blog = models.ForeignKey(Blog, related_name='years')
+
+    #properties
+    index = models.IntegerField()
+
+class Month(models.Model):
+    #connections
+    year = models.ForeignKey(Year, related_name='months')
+
+    #properties
+    index = models.IntegerField()
+
+class Day(models.Model):
+    #connections
+    month = models.ForeignKey(Month, related_name='days')
+
+    #properties
+    index = models.IntegerField()
+
 class Post(models.Model):
     #connections
     blog = models.ForeignKey(Blog, related_name='posts')
+    day = models.ForeignKey(Day, related_name='posts')
 
     #properties
     title = models.CharField(max_length=255)
     body = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
+    index = models.IntegerField() #position in day
 
 class PageHit(models.Model):
     #connections

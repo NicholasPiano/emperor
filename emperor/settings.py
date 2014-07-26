@@ -4,6 +4,9 @@
 # If you want to use a different backend you have to remove all occurences
 # of "djangoappengine" from this file.
 from djangoappengine.settings_base import *
+import os
+
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ########## AUTH
 AUTH_USER_MODEL = 'blog.Emperor'
@@ -106,6 +109,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'emperor.urls'
 
 TEMPLATE_DIRS = (
+    os.path.join(PROJECT_ROOT, 'templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
