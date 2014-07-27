@@ -1,0 +1,22 @@
+<!-- blog.archive -->
+
+{% extend 'base.html' %}
+{% load staticfiles %}
+
+{% block css %}
+<link rel='stylesheet' href="{% static 'blog/css/archive.css' %}">
+{% endblock %}
+
+<!-- levels -->
+<!-- BlogListView -->
+if emperor
+for emperor in emperors
+<!-- EmperorListView -->
+for blog in emperor.blogs
+<!-- BlogView -->
+for year in blog.years
+<!-- YearArchiveView -->
+for month in year.months
+<!-- MonthArchiveView -->
+for day in month.days
+for post in day.posts
