@@ -82,6 +82,9 @@ class Emperor(AbstractBaseUser, PermissionsMixin):
         # Simplest possible answer: Yes, always
         return True
 
+    def __unicode__(self):
+        return self.display_name
+
 #meaty goodness
 class Blog(models.Model):
     #connections
@@ -92,12 +95,18 @@ class Blog(models.Model):
     description = models.CharField(max_length=255)
     date_created = models.DateTimeField(auto_now_add=True)
 
+    def __unicode__(self):
+        return self.name
+
 class Year(models.Model):
     #connections
     blog = models.ForeignKey(Blog, related_name='years')
 
     #properties
     index = models.IntegerField()
+
+    def __unicode__(self):
+        return self.index
 
 class Month(models.Model):
     #connections
@@ -106,12 +115,18 @@ class Month(models.Model):
     #properties
     index = models.IntegerField()
 
+    def __unicode__(self):
+        return self.index
+
 class Day(models.Model):
     #connections
     month = models.ForeignKey(Month, related_name='days')
 
     #properties
     index = models.IntegerField()
+
+    def __unicode__(self):
+        return self.index
 
 class Post(models.Model):
     #connections
@@ -123,6 +138,9 @@ class Post(models.Model):
     body = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
     index = models.IntegerField() #position in day
+
+    def __unicode__(self):
+        return self.title
 
 class PageHit(models.Model):
     #connections

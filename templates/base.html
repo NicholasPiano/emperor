@@ -26,20 +26,28 @@
         <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/start/">Home</a>
+                    <a class="navbar-brand" href="/">Home</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="/admin/">Blog</a></li>
-                        <li><a href="/new/">New Job</a></li>
+                        <li><a href="/blog/">Blogs</a></li>
                     </ul>
                     <ul id="user-dropdown" class="nav navbar-nav navbar-right">
                         <li class="dropdown">
+                            {% if user.is_admin %}
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{user}} <b class="caret"></b></a>
                             <ul class="dropdown-menu">
+                                {% if is_post %}
                                 <li><a href="edit/">Edit</a></li>
+                                <li><a href="new/">New</a></li>
+                                {% else %}
+                                <li><a href="new/">Edit</a></li>
+                                {% endif %}
                                 <li><a href="/logout/">Logout</a></li>
                             </ul>
+                            {% else %}
+                            <a href='/signup/'>Sign up</a>
+                            {% endif %}
                         </li>
                     </ul>
                 </div><!--/.nav-collapse -->

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %} All the blogs {% endblock %}
+
+{% block css %}<link rel="stylesheet" href="{% static 'blog/css/index.css' %}">{% endblock %}
+
+{% block content %}
+<div id="wrapper" class="container">
+    <h1>Latest blog posts</h1>
+    {% for post in latest_blog_posts %}
+
+    {% endfor %}
+    <h1>Most active emperors</h1>
+</div>
+{% endblock %}

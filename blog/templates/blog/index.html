@@ -1,12 +1,22 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-{% block title %} Kneel before Zod {% endblock %}
+{% block title %} Emperor:Minimalist blogging platform {% endblock %}
 
 {% block css %}<link rel="stylesheet" href="{% static 'blog/css/index.css' %}">{% endblock %}
 
 {% block content %}
 <div id="wrapper" class="container">
-    <p>Hello, World!</p>
+    <h1>Welcome to Emperor</h1>
+    <h2>Blogs</h2>
+    {% for blog in blogs %}
+    <a href="/blog/{{blog.emperor}}/{{blog.name}}/">{{blog.name}}</a>
+    {% endfor %}
+    <h2>Emperors</h2>
+    {% for emperor in emperors %}
+    <a href="/blog/{{emperor}}/">{{emperor}}</a>
+    {% endfor %}
 </div>
+
+<p>{{hello}}</p>
 {% endblock %}

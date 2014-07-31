@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     #frontend-misc
     url(r'^$', IndexView.as_view()),
     url(r'emperors/', EmperorListView.as_view()),
+    url(r'signup/', SignupView.as_view()),
 
     #backend
     url(r'^login/$', LoginView.as_view()),
@@ -43,6 +44,7 @@ urlpatterns = patterns('',
                         url(r'(?P<day>[0-9]{2})/(?P<index>[0-9]+)/$', include([
                             url(r'^$', PostView.as_view()), #vars: emperor, blog_id, year, month, day, index
                             url(r'edit/', EditorView.as_view()), #vars: emperor, blog_id, year, month, day, index
+                            url(r'new/', 'blog.views.new_post'), #vars: emperor, blog_id
                             url(r'delete/', 'blog.views.delete_post'), #vars: emperor, blog_id, year, month, day, index
                         ])),
                     ])),
